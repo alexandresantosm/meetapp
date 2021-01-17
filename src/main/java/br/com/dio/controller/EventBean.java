@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.dio.model.Event;
 
 @Named
-public class EventController implements Serializable {
+@SessionScoped
+public class EventBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,9 +23,14 @@ public class EventController implements Serializable {
 	
 	public String addEvent() {
 		events.add(event);
-		System.out.println("Evento " + event + " cadastrado com sucesso!");
+		System.out.println("Evento " + event.getName() + " cadastrado com sucesso!");
+		clear();
 		
 		return "";
+	}
+	
+	private void clear() {
+		this.event = new Event();
 	}
 
 	public Event getEvent() {

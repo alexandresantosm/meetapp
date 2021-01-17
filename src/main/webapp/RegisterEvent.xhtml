@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Meetapp</title>
+</h:head>
+<h:body>
+	<h1>Cadastrar Evento</h1>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="Nome do evento:" />
+			<h:inputText value="#{eventBean.event.name}" />
+
+			<h:outputText value="Nome da organização" />
+			<h:inputText value="#{eventBean.event.organization}"/>
+
+			<h:outputText value="Local:" />
+			<h:inputText value="#{eventBean.event.local}" />
+
+			<h:outputText value="Data:" />
+			<h:inputText value="#{eventBean.event.date}" />
+
+			<h:outputText value="Horário:" />
+			<h:inputText value="#{eventBean.event.schedule}" />
+
+			<h:commandButton value="Cadastrar" action="#{eventBean.addEvent}"/>
+		</h:panelGrid>
+	</h:form>
+	
+	<h1>Lista de Eventos</h1>
+	
+	<h:dataTable value="#{eventBean.events}" var="event" border="1">
+		<h:column>#{event.name}</h:column>
+		<h:column>#{event.organization}</h:column>
+		<h:column>#{event.local}</h:column>
+		<h:column>#{event.date}</h:column>
+		<h:column>#{event.schedule}</h:column>
+	</h:dataTable>
+</h:body>
+</html>
